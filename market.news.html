@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About us</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Libre Baskerville', serif;
+        }
+        
+        body,
+        html {
+            height: 100%;
+            font-family: 'Libre Baskerville', serif;
+            text-align: center;
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://avatanplus.com/files/resources/original/5c1bd690545bc167ccbe23da.jpg') no-repeat center center/cover;
+            z-index: -1;
+        }
+        
+        .overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(7px);
+            z-index: -1;
+        }
+        
+        header {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 3;
+        }
+        
+        header .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+        }
+        
+        header .logo img {
+            height: 55px;
+            width: 55px;
+        }
+        
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 24px;
+        }
+        
+        header nav a:hover {
+            color: #ab5e31;
+            text-decoration: underline;
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        /* Выпадающее меню */
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            padding: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            border-radius: 5px;
+        }
+        /* Кнопки внутри выпадающего меню */
+        
+        .dropdown-menu .btn {
+            display: block;
+            margin: 5px 0;
+            padding: 10px 35px;
+            text-decoration: none;
+            background-color: #1e6c29;
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 16px;
+        }
+        /* Эффект наведения на кнопки */
+        
+        .dropdown-menu .btn:hover {
+            background-color: #ab5e31;
+        }
+        /* Показываем меню при наведении на ссылку */
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: rgb(90, 63, 27);
+            color: white;
+            min-height: 70vh;
+            width: 70%;
+            max-width: 1500px;
+            margin: 0 auto;
+            border-radius: 40px;
+            z-index: 2;
+            margin-top: 10%;
+        }
+        
+        .circle-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10%;
+            gap: 40px;
+            text-align: left;
+            font-size: 14px;
+        }
+        
+        .circle-container img {
+            border-radius: 20%;
+            width: 150px;
+            height: 150px;
+            margin-left: 10%;
+            box-shadow: 40px 20px 40px rgb(12, 12, 12);
+        }
+        
+        .circle-container text {
+            font-size: 24px;
+            color: #eaeaea;
+            margin: 80px auto;
+            gap: 30px;
+            text-align: left;
+        }
+        
+        .h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        
+        .rect-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .rect-container .row {
+            display: flex;
+            gap: 200px;
+        }
+        
+        .rectangle {
+            background-color: rgb(49, 49, 49);
+            padding: 15px;
+            text-align: left;
+            color: rgb(255, 255, 255);
+            border-radius: 10px;
+            width: 300px;
+            height: 600px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 18px;
+        }
+        
+        .rectangle h3 {
+            margin-bottom: 10px;
+            color: #94560e;
+        }
+        
+        .rectangle img {
+            width: 100%;
+            height: 200px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            object-fit: fill;
+            /* Игнорировать пропорции и заполнить контейнер */
+        }
+        
+        .bottom-section {
+            background-color: rgb(49, 49, 49);
+            padding: 30px;
+            text-align: center;
+            width: 70%;
+            margin-top: 50px;
+            height: 600px;
+            border-radius: 40px;
+            margin-bottom: 5%;
+        }
+        
+        .bottom-section h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #94560e;
+        }
+        
+        .bottom-section p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: rgb(255, 255, 255);
+            text-align: left;
+            margin-top: 5%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="overlay"></div>
+    <header>
+
+        <div class="logo img">
+            <img src="https://png.pngtree.com/png-vector/20220712/ourmid/pngtree-text-vector-geometric-shapes-design-png-image_5909957.png" alt="Логотип">
+            <p>Market news</p>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="companies.html">Companies</a>
+            <a href="market.news.html">Market news</a>
+            <a href="about1.html">About & Contacts</a>
+        </nav>
+    </header>
+
+    <div class="content-container">
+
+        <div class="circle-container">
+            <img src="https://i.pinimg.com/736x/91/5a/89/915a892e56d4b67f869f117fc637780f.jpg" alt="Круглое фото">
+
+            <div class="circle-container text">
+                <h1>Crypto Regulation
+                </h1>
+                <h2>Hong Kong Passes Stablecoin Licensing Bill</h2>
+                <p>On May 21, 2025, Hong Kong’s Legislative Council passed a new bill establishing a licensing regime for fiat-backed stablecoin issuers. Any issuer operating in Hong Kong or issuing stablecoins backed by HKD must obtain a license from the
+                    Hong Kong Monetary Authority. The law sets strict requirements for reserve management, redemption procedures, and risk oversight to protect public interest and investors. Source: reuters.com
+
+
+            </div>
+        </div>
+        <div class="h1">
+            Stock Market News</h1>
+        </div>
+
+        <div class="rect-container">
+            <div class="row">
+                <div class="rectangle">
+                    <img src="https://i.pinimg.com/736x/9b/21/fd/9b21fdd6bc1fed0b2624158d4188b1a5.jpg" alt="фото 1">
+                    <h3>1. Dow Futures Dip as Bond Yields Climb</h3>
+                    <p>Dow Jones, S&P 500, and Nasdaq futures fell slightly while the 10-year Treasury yield rose to 4.53%. Shares of Palo Alto Networks dropped due to margin concerns despite beating earnings expectations. Meanwhile, XPeng and Xiaomi saw
+                        gains from solid results and upcoming EV launches. Elon Musk also confirmed that Tesla’s robotaxi will begin operating in Austin, Texas, by June. Source: investors.com</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="rectangle">
+                    <img src="https://i.pinimg.com/736x/9b/21/fd/9b21fdd6bc1fed0b2624158d4188b1a5.jpg" alt="Фото 2">
+                    <h3>2. Morgan Stanley Turns Bullish on U.S. Stocks</h3>
+                    <p>Morgan Stanley revised its outlook, claiming the market bottom is in. The firm predicts the S&P 500 will reach 6,500 by mid-2026, with a bullish case of 7,200. Key reasons include anticipated Fed rate cuts, a weakening dollar, and
+                        gains in productivity driven by AI. Source: marketwatch.com </div>
+                <div class="rectangle">
+                    <img src="https://i.pinimg.com/736x/9b/21/fd/9b21fdd6bc1fed0b2624158d4188b1a5.jpg" alt="Фото 3">
+                    <h3>3. CATL’s Successful IPO in Hong Kong</h3>
+                    <p>Chinese battery giant CATL had a strong debut in Hong Kong, with shares rising 16% on the first day. The company opted for Hong Kong over the U.S. due to political tensions. Major backers include Kuwait’s sovereign wealth fund and
+                        Oaktree Capital. The move signals Hong Kong’s rising role in global digital asset markets. Source: ft.com
+                    </p>
+                </div>
+            </div>
+
+            <div class="bottom-section">
+                <h1>Tech & Industry Trends</h1>
+                <h2>1. Generative AI & Autonomous Agents</h2>
+                <p>Generative AI continues to reshape industries from art to software development. In 2025, a strong focus is on autonomous AI agents—systems capable of independently handling complex workflows and decision-making without human oversight.
+                    Source: Globant Tech Report
+                </p>
+                <h2>2. The Rise of AI-Driven Automation</h2>
+                <p>AI-driven automation is transforming industries by streamlining processes and enhancing efficiency. In 2025, we expect to see significant advancements in robotic process automation (RPA) and intelligent automation, enabling organizations
+                    to optimize workflows and reduce operational costs. Source: McKinsey & Company
+                </p>
+                <h2>3. The Future of Work in an AI World</h2>
+                <p>As AI technologies continue to evolve, the future of work will be redefined. Companies will need to adapt to new ways of working, including remote collaboration and the integration of AI tools into daily tasks. Upskilling and reskilling
+                    the workforce will be crucial to thrive in this changing landscape. Source: World Economic Forum
+                </p>
+
+            </div>
+
+</body>
+
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Libre Baskerville', serif;
+        }
+        
+        body,
+        html {
+            text-align: center;
+            width: 100%;
+            overflow-x: hidden;
+            background-color: #404040;
+            font-family: 'Libre Baskerville', serif;
+        }
+        
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 500px;
+            background: url('https://avatanplus.com/files/resources/original/5c1bd690545bc167ccbe23da.jpg') no-repeat center center/cover;
+            z-index: 1;
+        }
+        
+        .overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 430px;
+            background: rgba(0, 0, 0, 0.553);
+            backdrop-filter: blur(5px);
+            z-index: 1;
+        }
+        
+        header {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 2;
+        }
+        
+        header .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+        }
+        
+        header .logo img {
+            height: 55px;
+            width: 55px;
+        }
+        
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 24px;
+        }
+        
+        header nav a:hover {
+            color: #925525;
+            text-decoration: underline;
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        /* Выпадающее меню */
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            padding: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            border-radius: 5px;
+        }
+        /* Кнопки внутри выпадающего меню */
+        
+        .dropdown-menu .btn {
+            display: block;
+            margin: 5px 0;
+            padding: 10px 35px;
+            text-decoration: none;
+            background-color: #925525;
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 16px;
+        }
+        /* Эффект наведения на кнопки */
+        
+        .dropdown-menu .btn:hover {
+            background-color: #925525;
+        }
+        /* Показываем меню при наведении на ссылку */
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 10px;
+            position: relative;
+            z-index: 2;
+            margin-top: 24%;
+        }
+        
+        .content-container h1 {
+            color: rgb(54, 37, 18);
+            font-size: 48px;
+            text-align: center;
+            margin-top: -130%;
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 100px;
+            width: 100%;
+        }
+        
+        .contact-container .contact-item {
+            width: 45%;
+            margin-bottom: 20px;
+            background-color: #6b3f1fc7;
+            padding: 20px;
+            border-radius: 10px;
+            color: rgb(255, 255, 255);
+            text-align: left;
+        }
+        
+        .contact-container .contact-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .contact-container .contact-item h3 {
+            margin-bottom: 10px;
+        }
+        
+        .contact-container .contact-item p {
+            margin-bottom: 20px;
+        }
+        
+        .contact-item iframe {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+        }
+        
+        .photo-grid {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+        
+        .photo-grid h1 {
+            font-size: 48px;
+            color: #ffffff;
+            text-align: center;
+        }
+        
+        .photo-grid img {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <div class="overlay"></div>
+        <header>
+            <div class="logo img">
+                <img src="https://png.pngtree.com/png-vector/20220712/ourmid/pngtree-text-vector-geometric-shapes-design-png-image_5909957.png" alt="Логотип">
+                <p>Welcome!</p>
+            </div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="companies.html">Companies</a>
+                <a href="market.news.html">Market news</a>
+                <a href="about1.html">About & Contacts</a>
+            </nav>
+
+        </header>
+
+        <div class="content-container">
+            <div clacc="contact-container h1">
+                <h1>Contact Us</h1>
+            </div>
+
+
+            <div class="contact-container">
+                <div class="contact-item">
+                    <img src="https://i.pinimg.com/736x/48/2b/06/482b062d655b05d1afe01d2a3c321651.jpg" alt="Изображение 1">
+                    <h3>Adress</h3>
+                    <p>Chuy, Kyrgyzstan.</p>
+                </div>
+
+                <div class="contact-item">
+                    <img src="https://i.pinimg.com/736x/48/2b/06/482b062d655b05d1afe01d2a3c321651.jpg" alt="Изображение 2">
+                    <h3>Our contacts.</h3>
+                    <p>Phone: +996706200905</p>
+                    <p>Phone 2: +996706321456</p>
+                </div>
+
+                <div class="contact-item">
+                    <img src="https://i.pinimg.com/736x/48/2b/06/482b062d655b05d1afe01d2a3c321651.jpg" alt="Изображение 3">
+                    <h3>Our location.</h3>
+
+
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1503179.9495166051!2d73.7803060993305!3d42.6211120078082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3899315e98a28049%3A0x8093082b1ff0acbb!2z0KfRg9C50YHQutCw0Y8g0L7QsdC70LDRgdGC0Yw!5e0!3m2!1sru!2skg!4v1733309164431!5m2!1sru!2skg"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div class="contact-item google-form">
+                    <img src="https://i.pinimg.com/736x/48/2b/06/482b062d655b05d1afe01d2a3c321651.jpg" alt="Изображение 4">
+                    <h3>Leave a review</h3>
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScs85osl6Mwq1_JA0o-gxIh_UWr-wjtmmXOsKKd53Ww-Pgr1w/viewform?embedded=true" width="100" height="500" frameborder="0" marginheight="0" marginwidth="0">Загрузка…</iframe>
+                </div>
+            </div>
+        </div>
+        <div class="photo-grid h1">
+            <h1>Feel free to contact us</h1>
+        </div>
+        <div class="photo-grid">
+
+            <a href="https://www.instagram.com/lwwkiu/"><img src="https://i.pinimg.com/736x/e7/41/6d/e7416dba4535dc32430a3375ea5a319d.jpg" alt="Фотография 1" title="Click to visit our page!"></a>
+            <a href="https://web.telegram.org/a/#-4522924855"><img src="https://i.pinimg.com/736x/79/61/40/796140e57a641a9cbcc2949f3b30069f.jpg" alt="Фотография 2" title="Click to visit our page!"></a>
+            <a href="https://web.whatsapp.com/"><img src="https://i.pinimg.com/736x/cd/47/db/cd47db21186f31f0c1a16b65802200d7.jpg" alt="Фотография 3" title="Click to visit our page!"></a>
+            <a href="https://mail.google.com/"><img src="https://i.pinimg.com/736x/98/c8/07/98c8079eb136ccaef570935e3de4575e.jpg" alt="Фотография 4" title="Click to visit our page!"></a>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

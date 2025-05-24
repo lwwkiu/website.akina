@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Libre Baskerville', serif;
+        }
+        
+        body,
+        html {
+            height: 100%;
+            font-family: 'Libre Baskerville', serif;
+            background-color: #2c2c2c;
+        }
+        
+        .background {
+            position: relative;
+            background-size: cover;
+            height: 100%;
+            background: url('https://avatanplus.com/files/resources/original/5c1bd690545bc167ccbe23da.jpg') no-repeat center center/cover;
+        }
+        
+        .overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.555);
+            backdrop-filter: blur(7px);
+            z-index: 1;
+        }
+        
+        header {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 3;
+        }
+        
+        header .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+        }
+        
+        header .logo img {
+            height: 55px;
+            width: 55px;
+        }
+        
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 24px;
+        }
+        
+        header nav a:hover {
+            color: #ab5e31;
+            text-decoration: underline;
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        /* Выпадающее меню */
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            padding: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            border-radius: 5px;
+        }
+        /* Кнопки внутри выпадающего меню */
+        
+        .dropdown-menu .btn {
+            display: block;
+            margin: 5px 0;
+            padding: 10px 35px;
+            text-decoration: none;
+            background-color: #1e6c29;
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 16px;
+        }
+        /* Эффект наведения на кнопки */
+        
+        .dropdown-menu .btn:hover {
+            background-color: #ab5e31;
+        }
+        /* Показываем меню при наведении на ссылку */
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        main {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #f77930;
+            padding-top: 100px;
+        }
+        
+        h1 {
+            font-size: 48px;
+            margin-bottom: 30px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            justify-items: center;
+            gap: 50px;
+        }
+        
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+        }
+        
+        .card-front {
+            background-size: cover;
+            background-position: center;
+        }
+        
+        footer {
+            background-color: #844d26;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+        }
+        
+        .card {
+            perspective: 1000px;
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            margin-bottom: 30px;
+            /* Добавляем отступ для кнопки */
+        }
+        
+        .info-button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #ab5e31;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+        
+        .info-button:hover {
+            background-color: #a64a28;
+        }
+        
+        .rect-container {
+            position: relative;
+            width: 400px;
+            height: 600px;
+            background-color: #ab5e31;
+            border-radius: 10px;
+            margin-top: 5%;
+            left: 100%;
+        }
+        
+        .city-info {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+            color: rgb(255, 255, 255);
+            text-align: left;
+            width: 65%;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        
+        .city-info .text {
+            flex: 1;
+            margin-right: 20px;
+            /* Добавим отступ справа, чтобы текст не сливался с картинкой */
+        }
+        
+        .city-info .image .rect-container img {
+            position: absolute;
+            top: 60px;
+            right: 80px;
+            width: 700px;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        /* Новый блок с текстом и изображениями */
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <div class="overlay"></div>
+        <header>
+            <div class="logo">
+                <img src="https://png.pngtree.com/png-vector/20220712/ourmid/pngtree-text-vector-geometric-shapes-design-png-image_5909957.png" alt="Логотип">
+                <p>companies</p>
+            </div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="companies.html">Companies</a>
+                <a href="market.news.html">Market news</a>
+                <a href="about1.html">About & Contacts</a>
+            </nav>
+        </header>
+
+
+
+        <main>
+            <h1>Places for the tour</h1>
+            <div class="grid">
+
+                <!-- Карточка 1 -->
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front" style="background-image: url('https://i.pinimg.com/736x/9d/3b/f0/9d3bf0644348e270d9ed7336ec1e6072.jpg');"></div>
+                        <div class="card-back"></div>
+                    </div>
+                    <button class="info-button" onclick="window.open('https://www.amazon.com/')">Apple</button>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front" style="background-image: url('https://i.pinimg.com/736x/fa/77/b0/fa77b013338560320180bd849176a98f.jpg');"></div>
+                        <div class="card-back"></div>
+                    </div>
+                    <button class="info-button" onclick="window.open('https://www.meta.com/about/?srsltid=AfmBOop4XX3tW9NrI50hrc1jj_5Us1OwQP4a2jeFsPX9oKospr15NAwR', '_blank')">Meta</button>
+                </div>
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front" style="background-image: url('https://i.pinimg.com/736x/df/f4/73/dff4732245de7a3469e434ef7d0c1efc.jpg');"></div>
+                        <div class="card-back"></div>
+                    </div>
+                    <button class="info-button" onclick="window.open('https://www.google.com/', '_blank')">Google</button>
+                </div>
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front" style="background-image: url('https://i.pinimg.com/736x/b1/bf/d9/b1bfd99e73b777d8a4d00c97339ce9c3.jpg');"></div>
+                        <div class="card-back"></div>
+                    </div>
+                    <button class="info-button" onclick="window.open('https://www.microsoft.com/', '_blank')">Microsoft</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front" style="background-image: url('https://i.pinimg.com/736x/bc/01/47/bc0147066f17683ac9ceeb75a5452ce7.jpg');"></div>
+                        <div class="card-back"></div>
+                    </div>
+                    <button class="info-button" onclick="window.open('https://www.amazon.com/', '_blank')">Amazon</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front" style="background-image: url('https://i.pinimg.com/736x/00/fc/02/00fc02a39fa23d3200f22433a07ca28e.jpg');"></div>
+                        <div class="card-back"></div>
+                    </div>
+                    <button class="info-button" onclick="window.open('https://www.tesla.com/', '_blank')">Tesla</button>
+                </div>
+
+        </main>
+        </div>
+        <div class="city-info">
+            <div class="text">
+                <h1>What is a company?</h1>
+                <p>A company is an organized group or legal entity that produces goods or provides services with the goal of making a profit. It can vary in size, operate in different industries, and may be privately owned, publicly traded, or government-run.
+                    Companies hire employees, have a management structure, and are officially registered to carry out business activities.
+            </div>
+            <div class="image">
+                <div class="rect-container">
+                    <img src="https://i.pinimg.com/736x/27/06/bc/2706bcc2de7a036bd7d2546e1f1a0c84.jpg" alt="Фото">
+                </div>
+            </div>
+        </div>
+
+
+
+        <footer>
+            <p>&copy; 2025 Kyrgyzstan Guide. All rights reserved.</p>
+        </footer>
+        <script>
+            function filterCards() {
+                const input = document.getElementById('searchInput').value.toLowerCase();
+                const cards = document.querySelectorAll('.card');
+
+                cards.forEach(card => {
+                    const name = card.getAttribute('data-name').toLowerCase();
+                    if (name.includes(input)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+        </script>
+
+</body>
+
+</html>
